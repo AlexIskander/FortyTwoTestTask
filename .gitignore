@@ -1,6 +1,3 @@
 *~
 *.pyc
-bin/
-lib/
 local/
-include/
