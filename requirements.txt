@@ -1,3 +1,0 @@
-Django==1.6
-django-bootstrap3==6.1.0
-MySQL-python==1.2.5
