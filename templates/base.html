@@ -18,8 +18,45 @@
    <body>
        <div class="container">
            <div class="row">
-               <div class="col-lg-12">
-                  site
+            <div class="col-lg-12">
+              <h1 class="text-danger">42Cups Coffee Test</h1>
+            </div>    
+           </div>
+           <div class="row">
+               <div class="col-lg-2"></div>
+               <div class="col-lg-10">
+                  {% include "pagination/user_pagination.html" %}
+                  <table class="table table-bordered table-hover">
+                    <tr>
+                     <th>Фото</th>
+                     <th>Имя</th>
+                     <th>Фамилия</th>
+                     <th>email</th>
+                     <th>номер</th>
+                     <th>skype</th>
+                     <th>jaber</th>
+                     <th>день рожденья</th>
+                     <th>другое</th>
+                    </tr> 
+                  {% for obj in users %}
+                    <tr>
+                     {% if obj.image %}
+                      <td>
+                        <img src="{{ obj.image.url}}" alt="{{ obj.username }}" title="{{ obj.username }}" width="100">
+                      </td>
+                     {% endif %}
+                     <td>{{ obj.first_name }}</td> 
+                     <td>{{ obj.last_name }}</td>
+                     <td>{{ obj.email }}</td>
+                     <td>{{ obj.biometric_number }}</td>
+                     <td>{{ obj.skype }}</td>
+                     <td>{{ obj.icq }}</td>
+                     <td>{{ obj.birthday }}</td>  
+                     <td>{{ obj.other }}</td>
+                    </tr> 
+                  {% endfor%}
+                  </table>
+                  {% include "pagination/user_pagination.html" %}
                </div>
            </div>
        </div>

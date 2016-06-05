@@ -5,7 +5,7 @@ from django.conf import settings
 from django.conf.urls import url, patterns
 from django.contrib import admin
 
-urlpatterns = patterns(
+urlpatterns = patterns('',
     url(r'^$', "users.views.home" ),
     url(r'^admin/', admin.site.urls),
 )

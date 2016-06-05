@@ -9,8 +9,11 @@ from .models import ExpansionUsers
 # Register your models here.
 
 class ExpansionUsersAdmin(admin.ModelAdmin) :
-    list_display = ["first_name", "last_name", "email"]
-    fields       = ["username", "password", "first_name", "last_name", "email", "image", "biometric_number", "skype", "icq"]
+    list_display = ["username", "last_name", "email"]
+    fields       = ["username",  "first_name", "last_name", 
+                    "email", "image", "biometric_number", "skype", "icq",
+                    "birthday", "other",
+                   ]
 
 
 

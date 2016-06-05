@@ -10,11 +10,13 @@ from django.contrib.auth.models import User
 # Create your models here.
 
 class ExpansionUsers(User):
-    #keyuser          = models.OneToOneField(User)
+
     image            = models.ImageField(upload_to="users_image", verbose_name=u'Фото', blank=True)
-    biometric_number = models.CharField(max_length=40, verbose_name=u'Бтометрический код', blank=True )
+    biometric_number = models.CharField(max_length=40, verbose_name=u'Биометрический код', blank=True )
     skype            = models.CharField(max_length=40, verbose_name=u'Skype', blank=True)
-    icq              = models.CharField(max_length=40, verbose_name=u'Icq', blank=True)
+    icq              = models.CharField(max_length=40, verbose_name=u'jaber', blank=True)
+    birthday         = models.DateField(verbose_name=u'Дата рожджения', blank=True, null=True)
+    other            = models.TextField(verbose_name=u'Другие данные', blank=True)
 
     def save(self, *args, **kwargs):
         try:
