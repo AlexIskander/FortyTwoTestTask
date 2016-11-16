@@ -6,7 +6,7 @@ from django.conf.urls import url, patterns
 from django.contrib import admin
 
 urlpatterns = patterns('',
-    #url(r'^$', "users.views.home" ),
+    url(r'^$', "users.views.home" ),
     url(r'^admin/', admin.site.urls),
 )
 
