@@ -1,4 +1,4 @@
-PHONY: reload test  makemigrations migrate
+PHONY: reload test  syncdb migrate
 
 MANAGE=python $(pwd)manage.py
 
@@ -9,6 +9,7 @@ update:
 	@make req
 	@make collectstatic
 	@make migrate
+	@make syncdb
 	touch reload_project
 
 reload:
@@ -29,6 +30,11 @@ migrate:
 
 collectstatic:
 	$(MANAGE) collectstatic --noinput 
+
+syncdb:
+	$(MANAGE) syncdb
+	
+
 
 req:
 	@echo "Installing requirements"
