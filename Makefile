@@ -1,41 +1,23 @@
-PHONY: reload test  syncdb migrate
+MANAGE=django-admin.py
+SETTINGS=fortytwo_test_task.settings
 
-MANAGE=python $(pwd)manage.py
+test: check_noqa
+	PYTHONPATH=`pwd` DJANGO_SETTINGS_MODULE=$(SETTINGS) $(MANAGE) test
+	flake8 --exclude '*migrations*,fortytwo_test_task/settings/__init__.py' \
+		--max-complexity=6 apps fortytwo_test_task
 
-
-update:
-	@git stash
-	@git pull
-	@make req
-	@make collectstatic
-	@make migrate
-	@make syncdb
-	touch reload_project
-
-reload:
-	@make collectstatic
-	touch reload
-
-test:
-	$(MANAGE)  test
+check_noqa:
+	bash check_noqa.sh
 
 run:
-	$(MANAGE) runserver
-
-makemigrations:
-	$(MANAGE) makemigrations
-
-migrate:
-	$(MANAGE) migrate
-
-collectstatic:
-	$(MANAGE) collectstatic --noinput 
+	PYTHONPATH=`pwd` DJANGO_SETTINGS_MODULE=$(SETTINGS) $(MANAGE) runserver
 
 syncdb:
-	$(MANAGE) syncdb
-	
+	PYTHONPATH=`pwd` DJANGO_SETTINGS_MODULE=$(SETTINGS) $(MANAGE) syncdb --noinput
 
+migrate:
+	PYTHONPATH=`pwd` DJANGO_SETTINGS_MODULE=$(SETTINGS) $(MANAGE) migrate
 
-req:
-	@echo "Installing requirements"
-	@pip install --exists-action=s -r requirements.txt
+collectstatic:
+	PYTHONPATH=`pwd` DJANGO_SETTINGS_MODULE=$(SETTINGS) $(MANAGE) collectstatic --noinput
+.PHONY: test syncdb migrate
