@@ -1,17 +1,16 @@
 {% load i18n %}
-{% load bootstrap3 %}
 <!doctype html>
 <html itemscope itemtype="http://schema.org/LocalBusiness" class="no-js" lang="ru">
-<!-- ======  BLOCK HEAD ====== -->
+{# ======  BLOCK HEAD ====== #}
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
      {% block head %}
-         {% bootstrap_css %}
-         <link href="{{ STATIC_URL }}css/customюcss" media="all" rel="stylesheet" />
+          <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+         <link href="{{ STATIC_URL }}css/custom.css" media="all" rel="stylesheet" />
       <title>{% block title %}{{ main_content.title }}{% endblock %}</title>
      {% endblock %}
   </head>
-<!-- ====== END BLOCK HEAD ====== -->
+{#  ====== END BLOCK HEAD ====== #}
    <body>
        <div class="container">
            <div class="row">
@@ -25,21 +24,21 @@
                   {% include "pagination/user_pagination.html" %}
                   <table class="table table-bordered table-hover">
                     <tr>
-                     <th>Фото</th>
-                     <th>Имя</th>
-                     <th>Фамилия</th>
+                     <th>Photo</th>
+                     <th>User name</th>
+                     <th>Last name</th>
                      <th>email</th>
-                     <th>номер</th>
+                     <th>Bio</th>
                      <th>skype</th>
                      <th>jaber</th>
-                     <th>день рожденья</th>
-                     <th>другое</th>
+                     <th>Birthday</th>
+                     <th>Other</th>
                     </tr> 
                   {% for obj in users %}
                     <tr>
                      {% if obj.image %}
                       <td>
-                        <img src="{{ obj.image.url}}" alt="{{ obj.username }}" title="{{ obj.username }}" width="100">
+                        <img src="{{ obj.image.url }}" alt="{{ obj.username }}" title="{{ obj.username }}" width="100">
                       </td>
                      {% endif %}
                      <td>{{ obj.first_name }}</td> 
@@ -57,7 +56,8 @@
                </div>
            </div>
        </div>
-          <footer class="navbar navbar-default navbar-fixed-bottom navbar-inverse"> <!-- row-footer    -->
+          {# -- row-footer    #}
+          <footer class="navbar navbar-default navbar-fixed-bottom navbar-inverse"> 
             <div class="container" >
               <div class="row">
                 <div class="col-lg-12">
@@ -66,11 +66,13 @@
 
               </div>
             </div>
-          </footer>                                                <!-- end row-footer -->
-<!-- ==============  JavaScript upload ================================================
-======================================================================================= -->
+          </footer>
+          {# end row-footer #}
+                                                          
+{# ==============  JavaScript upload ================================================ #}
+
     <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
-    {% bootstrap_javascript %}
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
   </body>
 </html>
 
