@@ -12,6 +12,11 @@ class ExpansionUsers(User):
         upload_to="users_image",
         verbose_name=u'Photo',
         blank=True)
+    contact = models.CharField(
+        max_length=120,
+        verbose_name=u'Contact',
+        blank=True,
+        default=0)
     biometric_number = models.CharField(
         max_length=40, verbose_name=u'Bio', blank=True)
     skype = models.CharField(max_length=40, verbose_name=u'Skype', blank=True)

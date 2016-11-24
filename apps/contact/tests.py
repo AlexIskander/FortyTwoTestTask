@@ -22,7 +22,9 @@ class ExpansionUsersTestCase(TestCase):
         """Cheack home page title"""
         request = HttpRequest()
         response = home_page(request)
-        self.assertIn(b'<title>Home page</title>', response.content)
+        self.assertIn(
+            b'<h1>42 Coffee Cups Test Assignment</h1>',
+            response.content)
 
     def setUp(self):
         ExpansionUsers.objects.create(
