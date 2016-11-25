@@ -19,7 +19,7 @@ class ExpansionUsersTestCase(TestCase):
         self.assertEqual(found.func, home_page)
 
     def test_home_page_returns_correct_html(self):
-        """Cheack home page title"""
+        """Cheack home page h1"""
         request = HttpRequest()
         response = home_page(request)
         self.assertIn(
